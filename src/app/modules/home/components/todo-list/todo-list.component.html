@@ -1,6 +1,6 @@
 <app-todo-input-add-itens class="mt-4" (emitItemTaskList)="setEmitTaskList($event)"></app-todo-input-add-itens>
 
-<section [ngClass]="{'loading': !taskList.length }">
+<section [ngClass]="{'loading': !taskList.length }" style="border: 2px solid-black; border-radius:12px; ">
 
   <ul *ngIf="taskList.length">
     <li *ngFor="let item of taskList; let i = index">
