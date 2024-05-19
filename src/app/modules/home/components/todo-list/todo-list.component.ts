@@ -9,16 +9,21 @@ import { TaskList } from '../../model/task-list';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements DoCheck {
+  taskStatus:any = 'Initiated'
 
   public taskList: Array<TaskList> = JSON.parse(localStorage.getItem("list") || '[]');
   constructor() { }
+
+  statusChange(event:any){
+    console.log('Task Status->>', this.taskStatus)
+  }
 
   ngDoCheck() {
     this.setLocalStorage()
   }
 
   public setEmitTaskList(event: string) {
-    return this.taskList.push({ task: event, checked: false });
+    return this.taskList.push({ task: event, checked: false, status: this.taskStatus });
   }
 
   public deleteItemTaskList(event: number) {
