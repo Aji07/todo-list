@@ -9,7 +9,7 @@
         [ngClass]="{'checked': item.checked}">
       <select
         class="form-control {{item.status == 'Initiated' ? 'text-info' : item.status == 'Completed' ? 'text-success' : 'text-warning'}} mr-2"
-        [(ngModel)]="taskStatus" (change)="statusChange($event)">
+        [(ngModel)]="item.status" (change)="statusChange($event)">
         <option *ngFor="let item of ['Initiated', 'Working', 'Completed']"
           class="{{item == 'Initiated' ? 'text-info' : item == 'Completed' ? 'text-success' : 'text-warning'}}"
           [value]="item"> {{item}}</option>

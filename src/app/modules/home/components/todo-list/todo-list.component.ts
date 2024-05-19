@@ -15,6 +15,7 @@ export class TodoListComponent implements DoCheck {
   constructor() { }
 
   statusChange(event:any){
+    this.taskStatus = event.target.value
     console.log('Task Status->>', this.taskStatus)
   }
 
@@ -23,6 +24,7 @@ export class TodoListComponent implements DoCheck {
   }
 
   public setEmitTaskList(event: string) {
+    this.taskStatus = 'Initiated'
     return this.taskList.push({ task: event, checked: false, status: this.taskStatus });
   }
 
