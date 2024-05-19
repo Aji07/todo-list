@@ -1,25 +1,29 @@
 <app-todo-input-add-itens class="mt-4" (emitItemTaskList)="setEmitTaskList($event)"></app-todo-input-add-itens>
 
 <section [ngClass]="{'loading': !taskList.length }" style="border: 2px solid-black; border-radius:12px; ">
-
   <ul *ngIf="taskList.length">
-    <li *ngFor="let item of taskList; let i = index">
+    <li *ngFor="let item of taskList; let i = index" class="row">
       <!-- <input type="checkbox" [(ngModel)]="item.checked"> -->
-      <input type="text" (keyup)="validationInput(item.task, i)" [(ngModel)]="item.task"
-        [ngClass]="{'checked': item.checked}">
-      <select
-        class="form-control {{item.status == 'Initiated' ? 'text-info' : item.status == 'Completed' ? 'text-success' : 'text-warning'}} mr-2"
-        [(ngModel)]="item.status" (change)="statusChange($event)">
-        <option *ngFor="let item of ['Initiated', 'Working', 'Completed']"
-          class="{{item == 'Initiated' ? 'text-info' : item == 'Completed' ? 'text-success' : 'text-warning'}}"
-          [value]="item"> {{item}}</option>
-      </select>
-      <button (click)="deleteItemTaskList(i)" class="mx-2">
-        <img src="assets/icons/icon-trash.svg">
-      </button>
+      <div class="col-md-8">
+        <input type="text" (keyup)="validationInput(item.task, i)" [(ngModel)]="item.task"
+          [ngClass]="{'checked': item.checked}">
+      </div>
+      <div class="col-md-3">
+        <select
+          class="form-control {{item.status == 'Initiated' ? 'text-info' : item.status == 'Completed' ? 'text-success' : 'text-warning'}} mr-2"
+          [(ngModel)]="item.status" (change)="statusChange($event)">
+          <option *ngFor="let item of ['Initiated', 'Working', 'Completed']"
+            class="{{item == 'Initiated' ? 'text-info' : item == 'Completed' ? 'text-success' : 'text-warning'}}"
+            [value]="item"> {{item}}</option>
+        </select>
+      </div>
+      <div class="col-md-1">
+        <button (click)="deleteItemTaskList(i)" class="mx-2">
+          <img src="assets/icons/icon-trash.svg">
+        </button>
+      </div>
     </li>
   </ul>
-
 </section>
 
 
